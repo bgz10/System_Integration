@@ -1,0 +1,44 @@
+{
+    "_declaration": {
+        "_attributes": {
+            "version": "1.0"
+        }
+    },
+    "rows": {
+        "row": [
+            {
+                "Capital": {
+                    "_text": "London"
+                },
+                "Country": {
+                    "_text": "UK"
+                },
+                "Population": {
+                    "_text": "1234"
+                }
+            },
+            {
+                "Capital": {
+                    "_text": "Berlin"
+                },
+                "Country": {
+                    "_text": "Germany"
+                },
+                "Population": {
+                    "_text": "1223123"
+                }
+            },
+            {
+                "Capital": {
+                    "_text": "Copenhagen"
+                },
+                "Country": {
+                    "_text": "Denmark"
+                },
+                "Population": {
+                    "_text": "12222"
+                }
+            }
+        ]
+    }
+}

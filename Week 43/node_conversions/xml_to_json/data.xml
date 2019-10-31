@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<rows>
+  <row>
+    <Capital>London</Capital>
+    <Country>UK</Country>
+    <Population>1234</Population>
+  </row>
+  <row>
+    <Capital>Berlin</Capital>
+    <Country>Germany</Country>
+    <Population>1223123</Population>
+  </row>
+  <row>
+    <Capital>Copenhagen</Capital>
+    <Country>Denmark</Country>
+    <Population>12222</Population>
+  </row>
+</rows>
