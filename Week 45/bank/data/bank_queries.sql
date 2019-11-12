@@ -1,0 +1,8 @@
+CREATE TABLE IF NOT EXISTS users_bank(
+    id TEXT NOT NULL,
+    email TEXT NOT NULL,
+    balance REAL NOT NULL,
+    PRIMARY KEY(id)) WITHOUT ROWID
+
+
+DROP TABLE users_bank

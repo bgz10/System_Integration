@@ -1,0 +1,10 @@
+CREATE TABLE IF NOT EXISTS users_skat(
+    id TEXT NOT NULL,
+    email TEXT NOT NULL,
+    debt REAL NOT NULL,
+    PRIMARY KEY(id)) WITHOUT ROWID
+
+
+UPDATE users_skat
+SET debt = 100000
+WHERE id = "22c679";
