@@ -73,10 +73,8 @@ while True:
                     cursor.execute(query)
                     public_key = cursor.fetchone()[1]
                     cursor.close()
-
-                    decoded = jwt.decode(token, public_key, algorithms='RS256')
-                    print(decoded)
-
+                    decoded = jwt.decode(token, public_key, audience=["USER"], issuer="Main Server", algorithms=['RS256'])
+                    print("Welcome,", decoded['name'])
                     while True:
                         print("Your token is safely stored. What would you like to do?")
                         print("1 - Logout")
@@ -93,13 +91,16 @@ while True:
                         elif ch == "2":
                             print("You choose to see your account balance...")
                             url = "http://localhost:8888/balance"
-                            response = requests.post(url, json={'access_token': token})
+                            response = requests.post(url, json={'token': token})
+
                             if response.status_code == 500:
                                 print("An error has occured...")
                                 continue
+                            
                             js = response.json()
                             print('Status: ' + js['message'])
                             print('Balance: ' + str(js['balance']) + 'DKK')
+
                         elif ch == "3":
                             print("You choose to make a deposit...")
                             while True:
@@ -114,7 +115,7 @@ while True:
                                     print("No.. the input string is not a number. It's a string")    
 
                             url = "http://localhost:8888/deposit"
-                            response = requests.post(url, json={'access_token': token, 'amount': float(amount)})
+                            response = requests.post(url, json={'token': token, 'amount': float(amount)})
                             if response.status_code == 500:
                                 print("An error has occured...")
                                 continue
@@ -135,7 +136,7 @@ while True:
                                     print("No.. the input string is not a number. It's a string")    
 
                              url = "http://localhost:8888/withdraw"
-                             response = requests.post(url, json={'access_token': token, 'amount': float(amount)})
+                             response = requests.post(url, json={'token': token, 'amount': float(amount)})
                              js = response.json()
                              if response.status_code == 500:
                                 print("An error has occured...")
@@ -152,7 +153,7 @@ while True:
                         elif ch == "5":
                             print("You choose to see your SKAT overview...")
                             url = "http://localhost:8889/overview"
-                            response = requests.post(url, json={'access_token': token})
+                            response = requests.post(url, json={'token': token})
                             if response.status_code == 500:
                                 print("An error has occured...")
                                 continue
@@ -162,7 +163,7 @@ while True:
                         elif ch == "6":
                             print("You choose to pay your SKAT debt...")
                             url = "http://localhost:8889/pay"
-                            response = requests.post(url, json={'access_token': token})
+                            response = requests.post(url, json={'token': token})
                             if response.status_code == 500:
                                 print("An error has occured...")
                                 continue
