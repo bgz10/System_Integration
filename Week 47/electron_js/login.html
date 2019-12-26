@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Express HTML</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+  <script>
+      function onSuccess(token){
+        alert(token)
+      }    
+      
+      
+     
+      if (window.addEventListener) {
+        window.addEventListener("message", onMessage, false);        
+      } 
+      else if (window.attachEvent) {
+          window.attachEvent("onmessage", onMessage, false);
+      }
+     
+      function onMessage(event) {
+          // Check sender origin to be trusted
+          if (event.origin !== "http://80.210.70.4:3333"){
+            console.log('not allowed')
+            return;
+          } 
+     
+          var data = event.data;
+     
+          if (typeof(window[data.func]) == "function") {
+              window[data.func].call(null, data.message);
+          }
+      }
+     
+    // Function to be called from iframe
+    function parentFunc(message) {
+        alert(message);
+    }  
+    </script>
+</head>
+<body>
+  <div style="margin:100px;">
+    <nav class="navbar navbar-inverse navbar-static-top">
+  <div class="container">
+    <a class="navbar-brand" href="/">Express HTML</a>
+    <ul class="nav navbar-nav">
+      <li class="active">
+        <a href="index.html">Home</a>
+      </li>
+      <li>
+        <a href="login.html">Login</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+    <div class="jumbotron"  style="padding:40px;">
+        <iframe name="Framename" src="http://80.210.70.4:3333/easyid-form.php" width="800" height="400" frameborder="0" scrolling="auto" class="frame-area">
+        </iframe>        
+    </div>
+  </div>
+</body>
+</html>
+
+
